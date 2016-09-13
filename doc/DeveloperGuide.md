@@ -45,8 +45,11 @@ Priority | As a ... | I want to ... | So that I can...
 `* * *` | user | add a new person |
 `* * *` | user | delete a person | remove entries that I no longer need
 `* * *` | user | find a person by name | locate details of persons without having to go through the entire list
+`* * *` | user | edit a person's details | easily change details of a person whom may have changed their details such as phone number
 `* *` | user | hide [private contact details](#private-contact-detail) by default | to minimize chance of someone else seeing them by accident
+`* *` | user | flexible command input | use the addressbook using my own style of writing | use the addressbook more conveniently and easily
 `*` | user with many persons in the address book | sort persons by name | locate a person easily
+`*` | user | have a password confirmation whenever a command edits the addressbook | other people are unable to edit my addressbook without permission 
 
 
 ## Appendix B : Use Cases
@@ -74,12 +77,55 @@ Use case ends.
 > 3a1. AddressBook shows an error message <br>
   Use case resumes at step 2
 
+#### Use case: Editing existing tags
+
+**MSS**
+
+1. User requests to list persons
+2. AddressBook shows a list of persons
+3. User requests to edit a tag of a specific person in the list
+4. AddressBook requests which tag of the person to edit and the new tag to edit into
+5. User enters the tag which he wants to edit and the new tag to edit into
+6. AddressBook repeats the input given and asks for confirmation to edit the tag
+7. User gives confirmation
+8. AddressBook edits the tag
+Use case ends.
+
+**Extensions**
+
+2a. The list is empty
+
+> Use case ends
+
+3a. The given index is invalid
+
+> 3a1. AddressBook shows an error message <br>
+  Use case resumes at step 2
+
+4a. The person has no tags
+
+> 4a1. AddressBook shows an error message <br>
+  Use case resumes at step 2
+
+5a. The given index is invalid
+
+> 5a1. AddressBook shows an error message <br>
+  Use case resumes at step 2
+
+7a. User does not give confirmation
+ > 7a1. AddressBook shows unedited tag message <br>
+   Use case resumes at step 2
+
 ## Appendix C : Non Functional Requirements
 
 1. Should work on any [mainstream OS](#mainstream-os) as long as it has Java 8 or higher installed.
 2. Should be able to hold up to 1000 persons.
 3. Should come with automated unit tests and open source code.
 4. Should favor DOS style commands over Unix-style commands.
+5. Should be intuitive to people who are not IT-savvy
+6. Should response quickly to any command input and display the information within 1 second
+7. Should be free of charge
+8. Should be able to work purely with keyboard and typing without the need of a mouse
 
 ## Appendix D : Glossary
 
